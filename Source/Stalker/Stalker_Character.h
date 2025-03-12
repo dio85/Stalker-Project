@@ -3,9 +3,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputAction.h"
+#include "EnhancedInputSubsystems.h"
+#include "EnhancedPlayerInput.h"
 #include "Stalker_Character.generated.h"
 
+
 class UInputComponent;
+class UInputMappingContext;
 class USkeletalMeshComponent;
 class USceneComponent;
 class UCameraComponent;
@@ -24,6 +28,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon) bool Has_Rifle;  // Переменная для AnimBP для переключения на другой набор анимаций
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh) USkeletalMeshComponent *Mesh_1P;  // Меш игрока от первого лица (только свои руки)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) AWeapon *Current_Weapon;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EnhancedInput")
+	UInputMappingContext* InputMapping;
 
 protected:
 	virtual void BeginPlay();

@@ -45,6 +45,14 @@ void AStalker_Character::BeginPlay()
 //------------------------------------------------------------------------------------------------------------
 void AStalker_Character::SetupPlayerInputComponent(UInputComponent *input_component)
 {
+
+	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+
+	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
+
+	Subsystem->ClearAllMappings();
+	Subsystem->AddMappingContext(InputMapping, 0);
+
 	// Устанавливаем биндинги действий
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(input_component))
 	{
